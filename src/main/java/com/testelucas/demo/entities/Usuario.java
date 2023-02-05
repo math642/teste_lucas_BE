@@ -1,7 +1,17 @@
 package com.testelucas.demo.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "td_usuario")
 public class Usuario {
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String login;
     private String nome;
     private String senha;
