@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.testelucas.demo.entities.Beneficiario;
-import com.testelucas.demo.entities.Plano;
 import com.testelucas.demo.repositories.BeneficiarioRepository;
 
 @RestController
