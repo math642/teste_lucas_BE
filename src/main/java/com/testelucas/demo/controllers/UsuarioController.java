@@ -3,6 +3,7 @@ package com.testelucas.demo.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,8 +28,8 @@ public class UsuarioController {
         return resultados;
     }
 
-    @GetMapping(value = "/{login}")
-    public Usuario findById(@PathVariable String id ) {
+    @GetMapping(value = "/{id}")
+    public Usuario findById(@PathVariable Long id ) {
         Usuario resultado = repository.findById(id).get();
         return resultado;
     }
@@ -38,16 +39,18 @@ public class UsuarioController {
         Usuario resultado = repository.save(usuario);
         return resultado;
     }
-
-    @PutMapping(value = "/{login}")
-    public Usuario updateUsuario(@PathVariable String id, @RequestBody Usuario usuario){
+    
+    @PutMapping(value = "/{id}")
+    public Usuario updateUsuario(@PathVariable Long id, @Validated @RequestBody Usuario usuario){
         Usuario resultado = repository.findById(id).get();
-        resultado.setLogin(usuario.getLogin());
+        resultado.setLogin(usuario.getNome());
         resultado.setNome(usuario.getNome());
         resultado.setSenha(usuario.getSenha());
 
         Usuario updateUsuario = repository.save(resultado);
-
+        
         return updateUsuario;
     }
+    
+    
 }
