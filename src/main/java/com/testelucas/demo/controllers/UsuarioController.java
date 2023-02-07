@@ -39,7 +39,7 @@ public class UsuarioController {
         return resultado;
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/{login}")
     public Usuario updateUsuario(@PathVariable String id, @RequestBody Usuario usuario){
         Usuario resultado = repository.findById(id).get();
         resultado.setLogin(usuario.getLogin());

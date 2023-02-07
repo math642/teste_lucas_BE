@@ -27,7 +27,7 @@ public class PlanoController {
         return resultados;
     }
 
-    @GetMapping(value ="/{login}")
+    @GetMapping(value ="/{id}")
     public Plano findyById(@PathVariable Long id){
         Plano resultado = repository.findById(id).get();
         return resultado;
