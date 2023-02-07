@@ -16,7 +16,7 @@ public class Beneficiario {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private int cpg;
+    private int cpf;
     private String email;
     private int idade;
 
@@ -40,11 +40,11 @@ public class Beneficiario {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public int getCpg() {
-        return cpg;
+    public int getCpf() {
+        return cpf;
     }
-    public void setCpg(int cpg) {
-        this.cpg = cpg;
+    public void setCpf(int cpf) {
+        this.cpf = cpf;
     }
     public String getEmail() {
         return email;
