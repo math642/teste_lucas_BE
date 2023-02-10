@@ -1,9 +1,12 @@
 package com.testelucas.demo.entities;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -13,8 +16,11 @@ public class Plano {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private Boolean valor;
+    private String nome;
+    private Double valor;
+
+    @OneToMany(mappedBy = "plano")
+    List<Beneficiario> beneficiario;
     
     public Plano(){
 
@@ -25,24 +31,30 @@ public class Plano {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
-    public Boolean getValor() {
+    public Double getValor() {
         return valor;
     }
-    public void setValor(Boolean valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
+    }
+    public List<Beneficiario> getBeneficiario() {
+        return beneficiario;
+    }
+    public void setBeneficiario(List<Beneficiario> beneficiario) {
+        this.beneficiario = beneficiario;
     }
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((id == null) ? 0 : id.hashCode());
-        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + ((nome == null) ? 0 : nome.hashCode());
         result = prime * result + ((valor == null) ? 0 : valor.hashCode());
         return result;
     }
@@ -60,10 +72,10 @@ public class Plano {
                 return false;
         } else if (!id.equals(other.id))
             return false;
-        if (name == null) {
-            if (other.name != null)
+        if (nome == null) {
+            if (other.nome != null)
                 return false;
-        } else if (!name.equals(other.name))
+        } else if (!nome.equals(other.nome))
             return false;
         if (valor == null) {
             if (other.valor != null)

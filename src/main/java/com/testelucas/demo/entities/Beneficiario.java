@@ -1,5 +1,7 @@
 package com.testelucas.demo.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,6 +23,7 @@ public class Beneficiario {
     private int idade;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "id_plano")
     private Plano plano;
 

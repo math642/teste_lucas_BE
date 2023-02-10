@@ -42,7 +42,7 @@ public class PlanoController {
     @PutMapping(value = "/{id}")
     public Plano updatePlano(@PathVariable Long id, @RequestBody Plano plano){
         Plano resultado = repository.findById(id).get();
-        resultado.setName(plano.getName());
+        resultado.setNome(plano.getNome());
         resultado.setValor(plano.getValor());
 
         Plano updatePlano = repository.save(resultado);
